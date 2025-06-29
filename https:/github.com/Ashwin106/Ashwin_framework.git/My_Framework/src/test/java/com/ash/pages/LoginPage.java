@@ -43,6 +43,7 @@ public class LoginPage extends BaseTest {
 		clickBy(loginBtn, waitStrategy.VISIBLE);
 		Set<Cookie> cookies=driver.manage().getCookies();
 		System.out.println(cookies);
+		logStep("clicked on login successfully");
 		return this;
 
 	}
