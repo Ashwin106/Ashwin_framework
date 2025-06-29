@@ -15,7 +15,7 @@ import com.ash.utility.BasePage;
 public class ScreenshotUtil extends BasePage{
 	
 	public static String captureScreenshotToFile(WebDriver driver, String screenshotName) {
-	    String filePath = "test-output/screenshots/" + screenshotName + "_" + System.currentTimeMillis() + ".png";
+	    String filePath = "screenshots/screenshots/" + screenshotName + "_" + System.currentTimeMillis() + ".png";
 	    File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	    File destFile = new File(filePath);
 	    try {
