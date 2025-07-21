@@ -85,7 +85,7 @@ public class AdminPage extends BasePage {
 			WebElement optionElement = StatusList.findElement(By.xpath(".//*[contains(text(),'" + status + "')]"));
 			optionElement.click();
 			break;
-
+ 
 		}
 
 		return this;
