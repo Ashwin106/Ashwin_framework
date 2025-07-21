@@ -106,7 +106,7 @@ public class RecruitmentPage extends BasePage {
 	}
 
 	public RecruitmentPage enterNotes() {
-		enterValue(notes, waitStrategy.VISIBLE, "test NOTES");
+		enterValue(notes, waitStrategy.VISIBLE, "test NOtes-test");
 		return this;
 	}
 
@@ -114,5 +114,7 @@ public class RecruitmentPage extends BasePage {
 		clickBy(saveButton, waitStrategy.VISIBLE);
 		return this;
 	}
+	//new change in framework
+	
 
 }
