@@ -52,4 +52,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: screenshots
-        path: target/screenshots/  # <-- Change this to your screenshot directory
+        path: test-output # <-- Change this to your screenshot directory
