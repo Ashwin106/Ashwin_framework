@@ -31,7 +31,7 @@ public class LoginPage extends BaseTest {
 	public LoginPage enterpassword() {
 		
 		enterValue(password_textbox, waitStrategy.VISIBLE, "admin123");
-		logStep("entered password: admin123");
+		//logStep("entered password: admin123");
 	
 		
 				return this;
@@ -43,7 +43,7 @@ public class LoginPage extends BaseTest {
 		clickBy(loginBtn, waitStrategy.VISIBLE);
 		Set<Cookie> cookies=driver.manage().getCookies();
 		System.out.println(cookies);
-		logStep("clicked on login successfully");
+		//logStep("clicked on login successfully");
 		return this;
 
 	}
