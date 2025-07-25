@@ -1,12 +1,4 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Java CI with Maven
+name: Java CI with Maven and Screenshots
 
 on:
   push:
@@ -16,16 +8,48 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17
+    # Step 1: Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Step 2: Set up Java (change version if needed)
+    - name: Set up Java
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: maven
+
+    # Step 3: Cache Maven dependencies (faster builds)
+    - name: Cache Maven packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    # Step 4: Build the project (skip tests first to just compile)
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn clean install -DskipTests
+
+    # Step 5: Run tests (Selenium + JUnit/TestNG)
+    - name: Run Tests
+      run: mvn test
+
+    # Step 6: Upload Test Reports
+    - name: Upload Test Reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-reports
+        path: target/surefire-reports/
+
+    # Step 7: Upload Screenshots (if your framework saves screenshots in a folder)
+    - name: Upload Screenshots
+      if: always()  # Always upload even if tests fail
+      uses: actions/upload-artifact@v4
+      with:
+        name: screenshots
+        path: target/screenshots/  # <-- Change this to your screenshot directory
