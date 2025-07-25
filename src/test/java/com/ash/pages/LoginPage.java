@@ -22,7 +22,7 @@ public class LoginPage extends BaseTest {
 
 	public LoginPage enterusername() {
 		enterValue(username_textbox, waitStrategy.VISIBLE, "Admin");
-		logStep("entered username:Admin");
+		//logStep("entered username:Admin");
 	
 		return this;
 

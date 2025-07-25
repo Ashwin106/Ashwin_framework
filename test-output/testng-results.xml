@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-29T19:21:26 IST" name="Suite" finished-at="2025-06-29T19:21:37 IST" duration-ms="11004">
+  <suite started-at="2025-07-25T13:02:20 IST" name="Suite" finished-at="2025-07-25T13:02:33 IST" duration-ms="12634">
     <groups>
     </groups>
-    <test started-at="2025-06-29T19:21:26 IST" name="TestonChrome" finished-at="2025-06-29T19:21:37 IST" duration-ms="11004">
+    <test started-at="2025-07-25T13:02:20 IST" name="TestonChrome" finished-at="2025-07-25T13:02:33 IST" duration-ms="12634">
       <class name="com.ash.tests.AdminCreation">
-        <test-method is-config="true" signature="getInstance()[pri:0, instance:com.ash.tests.AdminCreation@bcec361]" started-at="2025-06-29T19:21:26 IST" name="getInstance" finished-at="2025-06-29T19:21:26 IST" duration-ms="72" status="PASS">
+        <test-method is-config="true" signature="getInstance()[pri:0, instance:com.ash.tests.AdminCreation@6aaceffd]" started-at="2025-07-25T13:02:20 IST" name="getInstance" finished-at="2025-07-25T13:02:21 IST" duration-ms="256" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getInstance -->
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.ash.tests.AdminCreation@bcec361]" started-at="2025-06-29T19:21:26 IST" name="launchBrowser" finished-at="2025-06-29T19:21:36 IST" duration-ms="9857" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.ash.tests.AdminCreation@6aaceffd]" started-at="2025-07-25T13:02:21 IST" name="launchBrowser" finished-at="2025-07-25T13:02:32 IST" duration-ms="11244" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -22,7 +22,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="Admin()[pri:0, instance:com.ash.tests.AdminCreation@bcec361]" started-at="2025-06-29T19:21:36 IST" name="Admin" finished-at="2025-06-29T19:21:37 IST" duration-ms="1064" status="FAIL">
+        <test-method signature="Admin()[pri:0, instance:com.ash.tests.AdminCreation@6aaceffd]" started-at="2025-07-25T13:02:32 IST" name="Admin" finished-at="2025-07-25T13:02:33 IST" duration-ms="1102" status="FAIL">
           <exception class="java.lang.NullPointerException">
             <message>
               <![CDATA[Cannot invoke "org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)" because "driver" is null]]>
