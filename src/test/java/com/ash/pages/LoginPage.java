@@ -41,8 +41,8 @@ public class LoginPage extends BaseTest {
 
 	public LoginPage clickLogin() {
 		clickBy(loginBtn, waitStrategy.VISIBLE);
-		Set<Cookie> cookies=driver.manage().getCookies();
-		System.out.println(cookies);
+		//Set<Cookie> cookies=driver.manage().getCookies();
+	//	System.out.println(cookies);
 		//logStep("clicked on login successfully");
 		return this;
 
