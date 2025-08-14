@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -32,24 +33,56 @@ public class BasePage extends ExtentManager{
 	@Parameters("browser")
 	public static WebDriver launchBrowser(String browserName) {
 	
-		if (browserName.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-		}
-		if (browserName.equals("edge")) {
-			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
-		}
-		if (browserName.equals("safari")) {
-			WebDriverManager.safaridriver().setup();
-			driver=new SafariDriver();
-		}
+//		if (browserName.equals("chrome")) {
+//			WebDriverManager.chromedriver().setup();
+//			driver = new ChromeDriver();
+//		}
+//		if (browserName.equals("edge")) {
+//			WebDriverManager.edgedriver().setup();
+//			driver = new EdgeDriver();
+//		}
+//		if (browserName.equals("safari")) {
+//			WebDriverManager.safaridriver().setup();
+//			driver=new SafariDriver();
+//		}
+//
+//		//driver.manage().window().maximize();
+//		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+//		driver.manage().window().maximize();
+//		
+//		return driver;
+		if (browserName.equalsIgnoreCase("chrome")) {
+	        WebDriverManager.chromedriver().setup();
 
-		//driver.manage().window().maximize();
-		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-		driver.manage().window().maximize();
-		
-		return driver;
+	        ChromeOptions options = new ChromeOptions();
+	        options.addArguments("--no-sandbox");
+	        options.addArguments("--disable-dev-shm-usage");
+
+	        // Run headless only in CI (like GitHub Actions)
+	        if (System.getenv("CI") != null) {
+	            options.addArguments("--headless=new");
+	            options.addArguments("--disable-gpu");
+	            options.addArguments("--window-size=1920,1080");
+	        }
+
+	        // IMPORTANT: Don't use --user-data-dir unless absolutely needed
+	        driver = new ChromeDriver(options);
+	    }
+
+	    if (browserName.equalsIgnoreCase("edge")) {
+	        WebDriverManager.edgedriver().setup();
+	        driver = new EdgeDriver();
+	    }
+
+	    if (browserName.equalsIgnoreCase("safari")) {
+	        WebDriverManager.safaridriver().setup();
+	        driver = new SafariDriver();
+	    }
+
+	    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    driver.manage().window().maximize();
+
+	    return driver;
 
 	}
 
