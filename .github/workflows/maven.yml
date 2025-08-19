@@ -5,6 +5,9 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  schedule:
+    - cron: "30 0 * * *"  # Runs daily at 00:30 UTC (6:00 AM IST)
+  workflow_dispatch:        # Optional manual trigger
 
 jobs:
   build:
@@ -15,14 +18,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # Step 2: Set up Java (change version if needed)
+    # Step 2: Set up Java
     - name: Set up Java
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    # Step 3: Cache Maven dependencies (faster builds)
+    # Step 3: Cache Maven dependencies
     - name: Cache Maven packages
       uses: actions/cache@v4
       with:
@@ -31,7 +34,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-    # Step 4: Build the project (skip tests first to just compile)
+    # Step 4: Build the project
     - name: Build with Maven
       run: mvn clean install -DskipTests
 
@@ -46,10 +49,10 @@ jobs:
         name: test-reports
         path: target/surefire-reports/
 
-    # Step 7: Upload Screenshots (if your framework saves screenshots in a folder)
+    # Step 7: Upload Screenshots
     - name: Upload Screenshots
-      if: always()  # Always upload even if tests fail
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: screenshots
-        path: test-output # <-- Change this to your screenshot directory
+        path: test-output # Change this to your screenshot folder
